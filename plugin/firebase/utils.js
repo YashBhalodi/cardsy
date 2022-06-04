@@ -1,5 +1,5 @@
-import db from "./setup";
-import { updateDoc, doc, getDoc } from "@firebase/firestore";
+import { cardsGeneratedDocRef } from "./setup";
+import { updateDoc, getDoc } from "@firebase/firestore";
 
 const isDebug = process.env.NODE_ENV === "development";
 
@@ -20,12 +20,10 @@ export const logEvent = ({ eventName, eventData }) => {
 
 const cardsGeneratedLog = async ({ count }) => {
   try {
-    const cardGeneratedDocRef = doc(db, "stats/cards_generated");
-
-    const prevDoc = await getDoc(cardGeneratedDocRef);
+    const prevDoc = await getDoc(cardsGeneratedDocRef);
     const { count: prevCount } = prevDoc.data();
 
-    await updateDoc(cardGeneratedDocRef, {
+    await updateDoc(cardsGeneratedDocRef, {
       count: prevCount + count,
       updated_at_iso: new Date().toISOString(),
     });

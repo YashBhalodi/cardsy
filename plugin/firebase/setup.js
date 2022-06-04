@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAwumEcaJxcta7LBdAe_cMvDuBQZbbn9t0",
@@ -14,4 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export default db;
+// references
+const cardsGeneratedDocRef = doc(db, "stats/cards_generated");
+
+export { db, cardsGeneratedDocRef };

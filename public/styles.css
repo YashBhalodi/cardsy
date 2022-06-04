@@ -123,6 +123,28 @@ ul {
   gap: 40px;
 }
 
+.stat-section {
+  align-self: flex-end;
+
+  text-align: right;
+
+  position: absolute;
+  bottom: 64px;
+
+  line-height: 1.5;
+
+  font-size: 20px;
+  color: #0f26489d;
+}
+
+#generated-cards-count,
+#time-saved-duration {
+  font-weight: 700;
+  font-size: 24px;
+
+  color: var(--dark-turquoise);
+}
+
 .headline-container {
   display: flex;
   flex-direction: column;
