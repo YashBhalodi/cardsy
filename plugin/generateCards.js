@@ -1,5 +1,5 @@
 import { COLOR_MAP } from "./constants";
-
+import { logEvent } from "./firebase/utils";
 const { board } = window.miro;
 
 const generateCardObjectFor = (object, x, y) => {
@@ -46,9 +46,13 @@ export const generateCards = async () => {
   });
 
   const cardsGenerated = await Promise.all(cardsGeneratedPromise);
-
-  if (cardsGenerated.length > 0) {
+  const cardCount = cardsGenerated.length;
+  if (cardCount > 0) {
     await board.viewport.zoomTo(cardsGenerated);
-    console.log(`Cardsy generated ${cardsGenerated.length} cards for you.`);
+    console.log(`Cardsy generated ${cardCount} cards for you.`);
+    logEvent({
+      eventName: "cards_generated",
+      eventData: cardCount,
+    });
   }
 };

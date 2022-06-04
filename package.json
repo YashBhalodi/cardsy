@@ -8,6 +8,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "firebase": "^9.8.2",
     "mirotone": "2.0.8"
   },
   "devDependencies": {
