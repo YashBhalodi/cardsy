@@ -31,6 +31,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #0f2648d2;
   border-radius: 6px;
 }
+a {
+  text-decoration: none;
+  color: var(--dark-blue);
+}
 
 section {
   width: calc(100vw - (100vw - 100%));
@@ -123,18 +127,28 @@ ul {
   gap: 40px;
 }
 
-.stat-section {
-  align-self: flex-end;
+.main-section-footer {
+  display: flex;
+  flex-direction: row;
 
-  text-align: right;
+  height: fit-content;
+  width: 100%;
 
-  position: absolute;
-  bottom: 64px;
-
+  margin-bottom: 48px;
   line-height: 1.5;
+
+  justify-content: space-between;
+  align-items: flex-end;
 
   font-size: 20px;
   color: #0f26489d;
+}
+
+.jump-to-feedback {
+}
+
+.stat-section {
+  text-align: right;
 }
 
 #generated-cards-count,
