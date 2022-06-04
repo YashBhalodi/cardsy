@@ -1,33 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/assets/style.css" />
+
+    <title>Cardsy | Handy plugin to generate miro cards in snap</title>
+    <meta
+      name="description"
+      content="Automatically generate loads of cards in your Miro board with a single click. Get to action stage from brainstorming stage in matter of seconds. Generate cards to use in kanban, user story mapping, etc with ease."
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script src="https://miro.com/app/static/sdk/v2/miro.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="public/assets/images/favicon.svg"
+    />
+    <link rel="icon" type="image/png" href="public/assets/images/favicon.png" />
   </head>
   <body>
-    <div class="grid container">
-      <div class="cs1 ce12">
-        <img src="/src/assets/welcome.png" alt="" />
+    <section class="light">
+      <div class="section-content">
+        <div class="logo">
+          <div class="brand brandLogo">Cardsy</div>
+          <div class="brand brandSubheading">A Miro Plugin</div>
+        </div>
+        <div class="main-content">
+          <div class="headline-container">
+            <div class="headline">
+              Generate Miro cards in
+              <span class="dark-turquoise-text">snap</span>
+            </div>
+            <div class="subHeadline">
+              <span class="dark-turquoise-text">Save time</span> and
+              <span class="dark-turquoise-text">speed up</span> your work in
+              Miro
+            </div>
+          </div>
+          <div class="cta-container">
+            <a
+              class="primary-cta"
+              target="_blank"
+              href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347923223678&redirect_uri=/confirm-app-install/"
+              >Install Cardsy</a
+            >
+            <a class="text-cta" href="#how-it-works">How does it work?</a>
+          </div>
+        </div>
       </div>
-      <div class="cs1 ce12">
-        <h1>Great, your app is running locally</h1>
-        <p>
-          You can now create your Developer team to get your app running in
-          Miro.
-        </p>
+    </section>
+    <section class="dark">
+      <div class="story-content">
+        <div class="story-inner-container">
+          <div class="story-title">
+            Miro <span class="turquoise-text">Cards</span> are awesome, right?
+          </div>
+          <div class="story-message">
+            They have a title.
+            <span class="dimmed-text">(duh!?)</span><br /><br />You can add rich
+            descriptions with basic formatting. <br /><br />Also, you can assign
+            tags to your cards. <br /><br />Not to mention, you can even assign
+            a “due date” and assign the card to one of your team member.
+            <br /><br />
+            And then you can use these cards in kanban, user story mapping and
+            well... you get the gist, right?
+          </div>
+        </div>
+        <div class="continuation-term">but ...</div>
       </div>
-      <div class="cs1 ce12">
-        <a
-          class="button button-primary"
-          href="https://developers.miro.com/docs/build-your-first-hello-world-app#step-2-create-a-developer-team-in-miro"
-          target="_blank"
-        >
-          Create a Developer team
-        </a>
+    </section>
+    <section class="dark">
+      <div class="story-content">
+        <div class="story-inner-container">
+          <div class="story-title">
+            You generally don’t start with using cards.
+          </div>
+          <div class="story-message">
+            During brainstorming session, you don't use cards.<br /><br />
+            You use simple widgets like
+            <span class="turquoise-text">Text</span>,
+            <span class="turquoise-text">Shape</span>, and most lovable
+            <span class="turquoise-text">Sticky Notes</span>.<br /><br />
+            <!-- If you are anything like me, you probably went wild with the
+            <span class="turquoise-text">Mind Maps</span>.😅 -->
+          </div>
+        </div>
+        <div class="continuation-term">and then ...</div>
       </div>
-    </div>
-    <script type="module" src="/src/index.js"></script>
+    </section>
+    <section class="dark">
+      <div class="story-content">
+        <div class="story-inner-container">
+          <div class="story-title">
+            When you need to put these brilliant ideas in action...
+          </div>
+          <div class="story-message">
+            You realise you should make all these into
+            <span class="turquoise-text">Cards</span> and then you can use them
+            in kanban or user story mapping etc ...<br /><br />But now you gotta
+            copy paste all these items and create cards and fill them with
+            details. 😨<br /><br />That sounds like a whole lot of work, and
+            obviously we wish we could just snap our fingers and
+            <span class="pink-red-text">boom</span>... <br />these are all the
+            <span class="turquoise-text">cards</span> I need. 🥳
+          </div>
+        </div>
+        <div class="continuation-term">Here comes your hero ...</div>
+      </div>
+    </section>
+    <section class="dark" id="how-it-works">
+      <div class="story-content">
+        <div class="story-inner-container">
+          <div class="story-title">
+            With <span class="turquoise-text">Cardsy</span> plugin installed in
+            your Miro board ...
+          </div>
+          <div class="story-message">
+            You just need to follow two simple steps.<br /><br />
+            <ul>
+              <li>
+                <span class="turquoise-text">Select</span> all the stuff that
+                you want to generate cards for. It can be anything, Texts,
+                Notes, Shapes etc...
+              </li>
+              <li>
+                <span class="turquoise-text">Click</span> on Cardsy plugin
+                button.
+              </li>
+            </ul>
+            <br /><br />
+            Yep. That’s it!!<br />
+            In a matter of few seconds, all your cards will be generated and you
+            can carry on with your work.
+          </div>
+        </div>
+        <div class="continuation-term">
+          Whoa!!
+          <span class="small-text"
+            >I wonder how much time you will save with
+            <span class="turquoise-text">Cardsy</span>...</span
+          >
+        </div>
+      </div>
+    </section>
+    <section class="light">
+      <div class="demo-section-content">
+        <div class="story-title">
+          And here is the demo of
+          <span class="dark-turquoise-text">Cardsy</span> in action ...
+        </div>
+        <div class="video-container">
+          <iframe
+            src="https://www.loom.com/embed/988ab3a3ab2c4da5b86d215e9401e2e1"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            style="border-radius: 8px; height: 100%; width: 100%"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+    <section class="light">
+      <div class="section-content">
+        <div class="section-light-heading">Ah, I forgot to mention ...</div>
+        <div class="main-content">
+          <div class="headline-container">
+            <div class="headline">
+              <span class="dark-turquoise-text">Cardsy</span> is forever
+              <span class="dark-turquoise-text">free</span> and
+              <span class="dark-turquoise-text">open-source</span>.
+            </div>
+          </div>
+          <div class="cta-container">
+            <a
+              class="primary-cta"
+              target="_blank"
+              href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347923223678&redirect_uri=/confirm-app-install/"
+              >Install Cardsy Now</a
+            >
+            <a
+              class="text-cta"
+              href="https://github.com/YashBhalodi/cardsy"
+              target="_blank"
+              >Source code (Github)</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="light">
+      <div class="section-content">
+        <div class="section-light-heading">
+          Designed & Developed with <span><i class="fa fa-heart"></i></span> by
+          ...
+        </div>
+        <div class="about-section">
+          <div class="bio">
+            <div class="bio-name">Yash Bhalodi</div>
+            <div class="bio-description">
+              Web & Mobile Developer,<br />Driven by passion for UX Design
+            </div>
+            <div class="social-links">
+              <a
+                class="link"
+                href="https://github.com/YashBhalodi"
+                target="_blank"
+              >
+                <i class="fa fa-github icon"></i>
+              </a>
+              <a
+                class="link"
+                href="https://www.linkedin.com/in/YashBhalodi"
+                target="_blank"
+              >
+                <i class="fa fa-linkedin icon"></i>
+              </a>
+              <a
+                class="link"
+                href="https://twitter.com/YashBhalodi"
+                target="_blank"
+              >
+                <i class="fa fa-twitter icon"></i>
+              </a>
+              <a
+                class="link"
+                href="https://www.behance.net/YashBhalodi"
+                target="_blank"
+              >
+                <i class="fa fa-behance icon"></i>
+              </a>
+              <a
+                class="link"
+                href="mailto:hello@yashbhalodi.me"
+                target="_blank"
+              >
+                <i class="fa fa-envelope icon"></i>
+              </a>
+              <a
+                class="link"
+                href="https://www.yashbhalodi.me/"
+                target="_blank"
+              >
+                <i class="fa fa-chrome icon"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bio-img">
+            <img src="public/assets/images/yash.png" alt="Yash Bhalodi" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="./plugin/index.js"></script>
   </body>
 </html>
