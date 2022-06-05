@@ -149,6 +149,22 @@ ul {
 
 .stat-section {
   text-align: right;
+  line-height: 36px;
+}
+
+@keyframes scale-text {
+  0% {
+    opacity: 0;
+    font-size: 16px;
+  }
+  60% {
+    opacity: 0.9;
+    font-size: 36px;
+  }
+  100% {
+    opacity: 1;
+    font-size: 24px;
+  }
 }
 
 #generated-cards-count,
@@ -157,6 +173,15 @@ ul {
   font-size: 24px;
 
   color: var(--dark-turquoise);
+  animation: scale-text 1s ease-in-out;
+
+  transition: all 0.3s ease-in-out;
+}
+
+#generated-cards-count:hover,
+#time-saved-duration:hover {
+  color: var(--pink-red);
+  font-size: 32px;
 }
 
 .headline-container {
