@@ -195,11 +195,13 @@ ul {
 .headline {
   font-size: 44px;
   font-weight: 700;
+  text-align: center;
 }
 
 .subHeadline {
   font-weight: 400;
   font-size: 28px;
+  text-align: center;
 }
 
 .dark-turquoise-text {
@@ -264,7 +266,7 @@ ul {
   flex-direction: column;
   flex: 1;
   gap: 24px;
-  padding-right: 460px;
+  width: 80%;
 }
 
 .story-title {
@@ -398,6 +400,44 @@ ul {
   border-radius: 8px;
 }
 .icon:hover {
+  padding: 8px;
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
+}
+
+.share-section {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.share-text {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.share-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 32px;
+  width: min-content;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+
+.share-icon {
+  font-size: 32px !important;
+  color: var(--dark-blue);
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+}
+.share-icon:hover {
   padding: 8px;
   background-color: var(--dark-blue);
   color: var(--light-blue);
