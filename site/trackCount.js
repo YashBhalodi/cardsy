@@ -21,6 +21,11 @@ const updateTimeSavedNode = (latestDurationString) => {
 
 const unsubscribe = onSnapshot(cardsGeneratedDocRef, (doc) => {
   const { count = 0 } = doc.data();
+  if (count === 0) {
+    document.getElementById("stat-container").style.display = "none";
+  } else {
+    document.getElementById("stat-container").style.display = "block";
+  }
   updateCountNode(count);
   updateTimeSavedNode(secondsToDhms(count * 3));
 });
