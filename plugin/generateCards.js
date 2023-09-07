@@ -36,7 +36,7 @@ const generateCardObjectFor = (object, x, y) => {
 
 export const generateCards = async () => {
   // get selected widgets
-  let selectedWidgets = await board.getSelection();
+  let selectedWidgets = await board.experimental.getSelection();
 
   // filtering out shapes from all the selected widgets.
   selectedWidgets = selectedWidgets.filter((item) => {
