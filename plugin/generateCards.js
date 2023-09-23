@@ -3,19 +3,26 @@ import { logEvent } from "./firebase/utils";
 const { board } = window.miro;
 
 const generateCardObjectFor = (object, x, y) => {
-  const objectFillColor = object.style.fillColor;
 
   let cardColor = "#2399f3";
-  if (objectFillColor !== "transparent") {
-    if (COLOR_MAP[objectFillColor]) {
-      cardColor = COLOR_MAP[objectFillColor];
-    } else {
-      cardColor = objectFillColor;
+  
+  if(object?.style?.fillColor) {
+    const objectFillColor = object.style.fillColor;
+
+    if (objectFillColor !== "transparent") {
+      if (COLOR_MAP[objectFillColor]) {
+        cardColor = COLOR_MAP[objectFillColor];
+      } else {
+        cardColor = objectFillColor;
+      }
     }
   }
 
+  // Add support for mind maps with text
+  let title = object?.content || object?.nodeView?.content;
+
   const cardObject = {
-    title: object.content,
+    title: title,
     x: x,
     y: y,
     style: {
@@ -29,11 +36,11 @@ const generateCardObjectFor = (object, x, y) => {
 
 export const generateCards = async () => {
   // get selected widgets
-  let selectedWidgets = await board.getSelection();
+  let selectedWidgets = await board.experimental.getSelection();
 
   // filtering out shapes from all the selected widgets.
   selectedWidgets = selectedWidgets.filter((item) => {
-    return ["shape", "text", "sticky_note"].includes(item.type);
+    return ["shape", "text", "sticky_note", "mindmap_node"].includes(item.type);
   });
 
   const cardsObjects = selectedWidgets.map((item) =>
